@@ -3,22 +3,16 @@
     "version": "1.0.0",
     "scripts": {
         "build": "webpack --mode production",
-        "start": "webpack serve --mode development --open",
-        "test": "web-test-runner"
+        "start": "webpack serve --mode development --open"
     },
     "devDependencies": {
         "@babel/core": "^7.27.4",
         "@babel/preset-env": "^7.27.2",
         "@babel/preset-typescript": "^7.27.1",
-        "@open-wc/testing": "^4.0.0",
-        "@web/test-runner": "^0.20.2",
-        "@web/test-runner-playwright": "^0.11.1",
         "babel-loader": "^10.0.0",
-        "chai": "^5.2.0",
         "core-js": "^3.43.0",
         "html-webpack-plugin": "^5.6.3",
         "lit": "^2.7.5",
-        "playwright": "^1.53.0",
         "ts-loader": "^9.4.4",
         "typescript": "^5.1.6",
         "webpack": "^5.99.9",
