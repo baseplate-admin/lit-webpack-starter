@@ -1,0 +1,22 @@
+{
+    "name": "lit-webpack-starter",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "webpack --mode production",
+        "start": "webpack serve --mode development --open"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.27.4",
+        "@babel/preset-env": "^7.27.2",
+        "@babel/preset-typescript": "^7.27.1",
+        "babel-loader": "^10.0.0",
+        "core-js": "^3.43.0",
+        "html-webpack-plugin": "^5.6.3",
+        "lit": "^2.7.5",
+        "ts-loader": "^9.4.4",
+        "typescript": "^5.1.6",
+        "webpack": "^5.99.9",
+        "webpack-cli": "^5.0.1",
+        "webpack-dev-server": "^4.15.0"
+    }
+}
