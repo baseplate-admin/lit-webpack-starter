@@ -1,15 +1,15 @@
 import { minify } from 'html-minifier';
 
+const MINIFIER_OPTIONS = {
+    collapseWhitespace: true,
+    removeComments: true,
+    minifyCSS: true,
+    minifyJS: false,
+    conservativeCollapse: true,
+};
+
 export default function litCssMinifyPlugin(babel) {
     const t = babel.types;
-
-    const MINIFIER_OPTIONS = {
-        collapseWhitespace: true,
-        removeComments: true,
-        minifyCSS: true,
-        minifyJS: false,
-        conservativeCollapse: true,
-    };
 
     return {
         visitor: {

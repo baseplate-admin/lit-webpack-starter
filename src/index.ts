@@ -2,7 +2,7 @@ import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement('hello-world')
-class HelloWorld extends LitElement {
+export class HelloWorld extends LitElement {
     @property({ type: String }) name = 'Lit';
 
     static styles = css`
