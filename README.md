@@ -1,6 +1,6 @@
 # LitElement + TypeScript + Webpack Starter
 
-A minimal starter project for building LitElement web components using TypeScript, Babel, and Webpack — with decorators support and proper config to avoid common Lit reactivity issues.
+A minimal starter project for building LitElement web components using TypeScript, Babel, and Webpack — with decorators support and proper config.
 
 ---
 
@@ -11,6 +11,7 @@ A minimal starter project for building LitElement web components using TypeScrip
 - Webpack 5 for bundling & dev server
 - CSS support with style-loader and css-loader
 - Simple development server with hot reload
+- Custom Babel plugin to minify the html literals
 
 ---
 
