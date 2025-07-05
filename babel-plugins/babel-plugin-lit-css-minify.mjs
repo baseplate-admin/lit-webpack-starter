@@ -1,38 +1,25 @@
-import { minify } from 'html-minifier';
-
-const MINIFIER_OPTIONS = {
-    collapseWhitespace: true,
-    removeComments: true,
-    minifyCSS: true,
-    minifyJS: false,
-    conservativeCollapse: true,
-};
-
-export default function litCssMinifyPlugin(babel) {
-    const t = babel.types;
-
+export default function litHtmlMinifyPlugin({ types: t }) {
     return {
         visitor: {
             TaggedTemplateExpression(path) {
                 const tag = path.node.tag;
+                if (!t.isIdentifier(tag)) return;
+                if (tag.name !== 'html' && tag.name !== 'css') return;
 
-                if (
-                    t.isIdentifier(tag) &&
-                    (tag.name === 'css' || tag.name === 'html')
-                ) {
-                    const tpl = path.node.quasi;
-                    if (tpl.expressions.length > 0) return;
+                const tpl = path.node.quasi;
 
-                    const raw = tpl.quasis.map((q) => q.value.raw).join('');
+                // If any raw quasi contains '@' or unquoted attributes do a basic whitespace trim
+                for (const q of tpl.quasis) {
+                    if (/@\w+=/.test(q.value.raw)) {
+                        // Basic whitespace collapse instead of full minify:
+                        q.value.raw = q.value.raw.replace(/\s+/g, ' ').trim();
+                        q.value.cooked = q.value.raw;
+                        continue;
+                    }
 
-                    const minified = minify(raw, MINIFIER_OPTIONS);
-
-                    tpl.quasis = [
-                        t.templateElement(
-                            { raw: minified, cooked: minified },
-                            true
-                        ),
-                    ];
+                    // Do the same whitespace trim:
+                    q.value.raw = q.value.raw.replace(/\s+/g, ' ').trim();
+                    q.value.cooked = q.value.raw;
                 }
             },
         },

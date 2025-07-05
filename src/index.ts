@@ -12,9 +12,22 @@ export class HelloWorld extends LitElement {
             background: #fefefe;
             font-family: Arial, sans-serif;
         }
+        span {
+            color: red;
+        }
     `;
 
+    private handleClick() {
+        alert(`Hello, ${this.name}!`);
+    }
+
     render() {
-        return html`<h1>Hello, ${this.name} + Webpack + Decorators!</h1>`;
+        return html` <p>Welcome to the Lit Element!</p>
+            <h1>
+                Hello,
+                <span>${this.name}</span>
+                + Webpack + Decorators!
+            </h1>
+            <button @click=${this.handleClick}>Click to have an alert</button>`;
     }
 }

@@ -34,13 +34,13 @@ const config: Configuration = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            cacheDirectory: true,
+                            cacheDirectory: false,
                         },
                     },
                     {
                         loader: 'ts-loader',
                         options: {
-                            transpileOnly: true,
+                            transpileOnly: false,
                         },
                     },
                 ],
