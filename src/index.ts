@@ -22,12 +22,14 @@ export class HelloWorld extends LitElement {
     }
 
     render() {
-        return html` <p>Welcome to the Lit Element!</p>
+        return html`
+            <p>Welcome to the Lit Element!</p>
             <h1>
                 Hello,
                 <span>${this.name}</span>
                 + Webpack + Decorators!
             </h1>
-            <button @click=${this.handleClick}>Click to have an alert</button>`;
+            <button @click=${this.handleClick}>Click to have an alert</button>
+        `;
     }
 }

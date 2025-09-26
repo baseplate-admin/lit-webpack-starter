@@ -1,6 +1,5 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import type { Configuration as WebpackConfiguration } from 'webpack';
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server';
 
@@ -18,9 +17,18 @@ const config: Configuration = {
     },
     devtool: 'source-map',
     devServer: {
-        static: './dist',
+        static: [
+            {
+                directory: path.resolve(__dirname, 'dist'),
+            },
+            {
+                directory: path.resolve(__dirname, 'public'),
+                publicPath: '/',
+            },
+        ],
         port: 3000,
         hot: true,
+        historyApiFallback: true,
     },
     resolve: {
         extensions: ['.ts', '.js'],
@@ -34,7 +42,11 @@ const config: Configuration = {
                     {
                         loader: 'babel-loader',
                         options: {
-                            cacheDirectory: false,
+                            cacheDirectory: true,
+                            configFile: path.resolve(
+                                __dirname,
+                                './babel.config.ts'
+                            ),
                         },
                     },
                     {
@@ -47,11 +59,7 @@ const config: Configuration = {
             },
         ],
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html',
-        }),
-    ],
+    plugins: [],
 };
 
 export default config;
