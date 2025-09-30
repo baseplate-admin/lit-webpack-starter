@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "@babel/core": "^7.28.4",
-        "@babel/preset-env": "^7.27.2",
+        "@babel/preset-env": "^7.28.3",
         "@babel/register": "^7.27.1",
         "@types/babel__core": "^7.20.5",
         "babel-loader": "^10.0.0",
